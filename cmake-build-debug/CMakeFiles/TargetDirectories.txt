@@ -1,0 +1,3 @@
+C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/cmake-build-debug/CMakeFiles/udp_firmware_uploader.dir
+C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/cmake-build-debug/CMakeFiles/rebuild_cache.dir
