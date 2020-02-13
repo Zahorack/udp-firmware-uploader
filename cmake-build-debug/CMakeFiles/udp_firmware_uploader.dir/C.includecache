@@ -6,6 +6,8 @@
 
 #IncludeRegexTransform: 
 
+C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/include/main.h
+
 C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/include/packet.h
 stdint.h
 -
@@ -13,6 +15,8 @@ stdlib.h
 -
 stdio.h
 -
+main.h
+C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/include/main.h
 
 C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/include/socket.h
 winsock.h
@@ -25,10 +29,14 @@ string.h
 -
 unistd.h
 -
+stdint.h
+-
 
 C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/src/packet.c
 ../include/packet.h
 C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/include/packet.h
 ../include/socket.h
 C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/include/socket.h
+../include/main.h
+C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/include/main.h
 

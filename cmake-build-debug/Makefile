@@ -149,6 +149,33 @@ main.c.s:
 	$(MAKE) -f CMakeFiles\udp_firmware_uploader.dir\build.make CMakeFiles/udp_firmware_uploader.dir/main.c.s
 .PHONY : main.c.s
 
+src/file.obj: src/file.c.obj
+
+.PHONY : src/file.obj
+
+# target to build an object file
+src/file.c.obj:
+	$(MAKE) -f CMakeFiles\udp_firmware_uploader.dir\build.make CMakeFiles/udp_firmware_uploader.dir/src/file.c.obj
+.PHONY : src/file.c.obj
+
+src/file.i: src/file.c.i
+
+.PHONY : src/file.i
+
+# target to preprocess a source file
+src/file.c.i:
+	$(MAKE) -f CMakeFiles\udp_firmware_uploader.dir\build.make CMakeFiles/udp_firmware_uploader.dir/src/file.c.i
+.PHONY : src/file.c.i
+
+src/file.s: src/file.c.s
+
+.PHONY : src/file.s
+
+# target to generate assembly for a file
+src/file.c.s:
+	$(MAKE) -f CMakeFiles\udp_firmware_uploader.dir\build.make CMakeFiles/udp_firmware_uploader.dir/src/file.c.s
+.PHONY : src/file.c.s
+
 src/packet.obj: src/packet.c.obj
 
 .PHONY : src/packet.obj
@@ -215,6 +242,9 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... src/file.obj
+	@echo ... src/file.i
+	@echo ... src/file.s
 	@echo ... src/packet.obj
 	@echo ... src/packet.i
 	@echo ... src/packet.s

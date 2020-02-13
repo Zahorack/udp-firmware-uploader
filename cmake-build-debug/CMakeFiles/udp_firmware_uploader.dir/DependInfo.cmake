@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/main.c" "C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/cmake-build-debug/CMakeFiles/udp_firmware_uploader.dir/main.c.obj"
+  "C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/src/file.c" "C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/cmake-build-debug/CMakeFiles/udp_firmware_uploader.dir/src/file.c.obj"
   "C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/src/packet.c" "C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/cmake-build-debug/CMakeFiles/udp_firmware_uploader.dir/src/packet.c.obj"
   "C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/src/socket.c" "C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/cmake-build-debug/CMakeFiles/udp_firmware_uploader.dir/src/socket.c.obj"
   )

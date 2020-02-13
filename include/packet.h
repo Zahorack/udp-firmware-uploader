@@ -8,6 +8,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "main.h"
 
 #ifdef __GNUC__
 #define PACK( __Declaration__ ) __Declaration__ __attribute__((__packed__))
@@ -44,13 +45,78 @@ enum packet_type {
     packet_type_custom_trigger,
     packet_type_read_davis_ID,
     packet_type_write_davis_ID,
-    packet_type_clear_davis_ID
+    packet_type_clear_davis_ID,
+    packet_type_bootloader,
+    packet_type_firmware_data,
+    packet_type_firmware_header
 };
 
+#pragma pack(push,1)
+typedef struct {
+    uint32_t	probeID_1;
+    uint32_t	probeID_2;
+    uint32_t	probeID_3;
+    uint32_t 	uptime;
+    uint16_t	PoE_voltage;
+    uint32_t 	Reset_counter;
+    uint32_t	MainLoop_speed;
+    uint32_t	Accel_INT_cnt;
+} __attribute__((packed)) Status_Packet;
+#pragma pack(pop)
+
+
+typedef struct {
+    uint8_t hour;
+    uint8_t minute;
+    uint8_t second;
+    uint8_t day;
+    uint8_t month;
+    uint16_t year;
+}FirmwareBuildDate_t;
+
+
+#pragma pack(push,1)
+typedef struct {
+    uint16_t 	mark;
+    uint8_t		type;
+    uint16_t	data_len;
+    uint8_t		head_crc;
+} __attribute__((packed)) Packet_Header;
+#pragma pack(pop)
+
+
+#pragma pack(push,1)
+typedef struct {
+    Packet_Header 	header;
+    uint8_t 		crc;
+    uint8_t			*data;
+} __attribute__((packed)) Data_Packet;
+#pragma pack(pop)
+
+
+#pragma pack(push,1)
+typedef struct {
+    Packet_Header header;
+    uint8_t crc;
+    uint16_t index;
+    uint16_t block_len;
+    char *data;
+}__attribute__((packed))firmwarePacket_t;
+#pragma pack(pop)
+
+
+extern FirmwareBuildDate_t g_index;
+extern Status_Packet g_status;
 
 extern uint8_t calc_crc8(uint8_t	* data, uint16_t len);
 extern void parse_packet();
 
+extern void parse_status();
+extern void get_firmware_index();
+extern void parse_firmware_index();
+
 extern void send_simple_packet(uint8_t packet_type);
+extern void send_firmware_header(firmwareArgs_t *firmware);
+extern void send_firmware_data(firmwareArgs_t *firmware);
 
 #endif //UDP_FIRMWARE_UPLOADER_PACKET_H

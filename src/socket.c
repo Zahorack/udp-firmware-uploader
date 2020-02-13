@@ -5,8 +5,6 @@
 #include "../include/socket.h"
 
 
-
-
 void create_socket(socketArgs_t *arg)
 {
     WSAStartup(MAKEWORD(1,1), &g_wsda);
@@ -36,6 +34,7 @@ void bind_socket(socketArgs_t *arg, int port)
     }
     printf("OK\n");
 
+    arg->connection_state = 0;
     // Receive, to store target address
     char data[512];
     receive_socket(&g_socket, data, 512);
@@ -51,16 +50,17 @@ int receive_socket(socketArgs_t *arg, char *data, int size)
     if (ret == SOCKET_ERROR) {
         printf("Error\nCall to recvfrom(s, data, dataLen, 0, (struct sockaddr *) &remote_addr, &iRemoteAddrLen); failed with:\n%d\n",
         WSAGetLastError());
-        exit(1);
+      // exit(1);
     }
 
     int dataLen = ret;        // Length of the data received
     data[dataLen] = '\0';        // Convert to cstring
-    for (int i = 0; i < ret; i++)
-    {
-        printf("%02X.", data[i]);
-    }
-    printf(" received from %s, %d, size: %d\n", inet_ntoa(arg->target_address.sin_addr), (int)ntohs(arg->target_address.sin_port),  ret);
+//    printf("\n");
+//    for (int i = 0; i < ret; i++)
+//    {
+//        printf("%02X.", data[i]);
+//    }
+//    printf("\n received from %s, %d, size: %d\n", inet_ntoa(arg->target_address.sin_addr), (int)ntohs(arg->target_address.sin_port),  ret);
 }
 
 void send_socket(socketArgs_t *arg, char *data, int size)

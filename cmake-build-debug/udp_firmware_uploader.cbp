@@ -74,6 +74,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/include/file.h">
+			<Option target="udp_firmware_uploader"/>
+		</Unit>
 		<Unit filename="C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/include/main.h">
 			<Option target="udp_firmware_uploader"/>
 		</Unit>
@@ -84,6 +87,9 @@
 			<Option target="udp_firmware_uploader"/>
 		</Unit>
 		<Unit filename="C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/main.c">
+			<Option target="udp_firmware_uploader"/>
+		</Unit>
+		<Unit filename="C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/src/file.c">
 			<Option target="udp_firmware_uploader"/>
 		</Unit>
 		<Unit filename="C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/src/packet.c">

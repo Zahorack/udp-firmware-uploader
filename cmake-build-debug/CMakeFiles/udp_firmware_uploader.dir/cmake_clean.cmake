@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/udp_firmware_uploader.dir/main.c.obj"
   "CMakeFiles/udp_firmware_uploader.dir/src/packet.c.obj"
   "CMakeFiles/udp_firmware_uploader.dir/src/socket.c.obj"
+  "CMakeFiles/udp_firmware_uploader.dir/src/file.c.obj"
   "udp_firmware_uploader.pdb"
   "udp_firmware_uploader.exe"
   "udp_firmware_uploader.exe.manifest"
