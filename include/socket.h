@@ -12,6 +12,8 @@
 #include <unistd.h>
 #include <stdint.h>
 
+#define MAX_BLOCK_SIZE 100
+
 #define TARGET_PORT 54321
 
 typedef struct {

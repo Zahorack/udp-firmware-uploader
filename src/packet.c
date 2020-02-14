@@ -2,18 +2,18 @@
 // Created by oholly on 5. 2. 2020.
 //
 
+#include <time.h>
 #include "../include/packet.h"
 #include "../include/socket.h"
 #include "../include/main.h"
+#include "../include/file.h"
 
 
 #define		PACKET_MARK					0x4B6B
 #define		PACKET_MAX_BLOCK_SIZE		1000
 
-static uint16_t data_sent = 0;
+static uint32_t data_sent = 0;
 
-Status_Packet g_status;
-FirmwareBuildDate_t g_index;
 
 const uint8_t crc8_Table[] =
 {
@@ -36,8 +36,6 @@ const uint8_t crc8_Table[] =
 };
 
 
-
-
 Packet_Header	* p_header_rx;
 
 
@@ -47,6 +45,7 @@ uint8_t calc_crc8(uint8_t	* data, uint16_t len){
 
     for(n = 0; n< len; n++){
         crc = crc8_Table[ crc ^ data[n] ] ;
+        //printf("crc %d: 0x%X - 0x%X \n\r", n, data[n], crc);
     }
     return crc;
 }
@@ -65,7 +64,7 @@ void send_simple_packet(uint8_t packet_type){
         p->header.head_crc	= calc_crc8((uint8_t *)&p->header, sizeof(Packet_Header) - 1);
         p->crc				= 0;
 
-        printf("-> send_simple_packet - p_size: %d, header: %d, %d, %d, crc: 0x%X\r\n",packet_size,  p->header.mark, p->header.data_len, p->header.type, p->header.head_crc);
+       // printf("-> send_simple_packet - p_size: %d, header: %d, %d, %d, crc: 0x%X\r\n",packet_size,  p->header.mark, p->header.data_len, p->header.type, p->header.head_crc);
 //        printf("size of data packet: %d\n\r", sizeof(Data_Packet));
 //        printf("size of header packet: %d\n\r", sizeof(Packet_Header));
 //        printf("size of uint8: %d\n\r", sizeof(uint8_t));
@@ -73,7 +72,7 @@ void send_simple_packet(uint8_t packet_type){
         send_socket(&g_socket, (char*)p, packet_size);
     }
     else{
-        printf("-> send_simple_packet - MEMORY PROBLEM !");
+        //printf("-> send_simple_packet - MEMORY PROBLEM !");
     }
     free(p);
 }
@@ -100,19 +99,39 @@ void parse_packet()
                     case packet_type_ack:
                         send_simple_packet(packet_type_header_ack);
                         break;
+
+                    case packet_type_nack:
+                        //g_firmware.block_index--;
+                        //printf("packet_type_data_nack\n\r");
+                        //sender(&g_firmware);
+                        break;
                     case packet_type_status:
                         send_simple_packet(packet_type_ack);
                         parse_status();
 
                         //testing now
                         get_firmware_index();
+
                         //if(je vyrmware stary, tak posli novy)
-                        send_firmware_header(&g_firmware);
-                        send_firmware_data(&g_firmware);
+
+//                        if(g_firmware.state != program_is_sending) {
+//                            send_firmware_header(&g_firmware);
+//                            send_firmware_data(&g_firmware);
+//                        }
+
                         break;
 
                     case packet_type_firmware_index:
                         parse_firmware_index();
+                        break;
+
+                    case packet_type_data_ack:
+                        data_sent += MAX_BLOCK_SIZE;
+                        g_firmware.block_index++;
+                       //sender(&g_firmware);
+                       g_senderState = sender_state_confirmed;
+
+                        //printf("<-packet_type_data_ack\n\r");
                         break;
 
                     default:
@@ -123,7 +142,7 @@ void parse_packet()
             }
             else printf("Cannot catch packet mark!\n");
         }
-        else printf("ERROR header CRC\n");
+        //else printf("ERROR header CRC\n");
     }
 }
 
@@ -144,7 +163,7 @@ void send_firmware_header(firmwareArgs_t *firmware)
     p->header.head_crc	= calc_crc8((uint8_t *)&p->header, sizeof(Packet_Header) - 1);
 
 	//printf("\r\nheader: %d, %d, %d, crc: 0x%X\r\n", p->header.mark, p->header.data_len, p->header.type, p->header.head_crc);
-    printf("-> send firmware header - data crc: 0x%X\r\n", p->crc);
+    //printf("-> send firmware header - data crc: 0x%X\r\n", p->crc);
     send_socket(&g_socket, (char*)p, sizeof(Packet_Header) +1); //+1 je este crc celeho balikui
 
     free(p);
@@ -154,19 +173,22 @@ void send_firmware_header(firmwareArgs_t *firmware)
     //sent_time = HAL_GetTick();
 }
 
+long map(long x, long in_min, long in_max, long out_min, long out_max) {
+    return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+
 void send_firmware_data(firmwareArgs_t *firmware)
 {
-    uint16_t data_size 	= firmware->size;
-    uint16_t max_block_size = 900;
-    uint16_t block_size;
 
-    if((data_size - data_sent) > max_block_size){
-        block_size =  max_block_size;
+    uint32_t data_size 	= firmware->size;
+    uint32_t block_size;
+
+    if((data_size - data_sent) > MAX_BLOCK_SIZE){
+        block_size =  MAX_BLOCK_SIZE;
     }
     else{
         block_size = data_size - data_sent;
     }
-
     firmwarePacket_t 	*p = malloc(sizeof(firmwarePacket_t));
 
     if(p == NULL) {
@@ -174,26 +196,46 @@ void send_firmware_data(firmwareArgs_t *firmware)
     }
 
     p->header.mark 		= PACKET_MARK;
-    p->header.data_len 	= firmware->size + 1;
+    p->header.data_len 	= firmware->size;
     p->header.type 		= packet_type_firmware_data;
     p->header.head_crc	= calc_crc8((uint8_t *)&p->header, sizeof(Packet_Header) - 1);
 
-    p->data				= (uint8_t *)firmware->bin + data_sent;
-    p->crc 				= calc_crc8((uint8_t *)firmware->bin, firmware->size);
+    p->crc              = calc_crc8((uint8_t *)firmware->bin, firmware->size);
+    p->len              = firmware->size;
+
+    memcpy(p->data, (firmware->bin + firmware->block_index * MAX_BLOCK_SIZE), block_size);
+
+    p->block_crc 		= calc_crc8((uint8_t *)p->data, block_size);
     p->block_len        = block_size;
-    p->index            = firmware->block_index++;
+    p->index            = firmware->block_index;
 
+   // printf("progress: %d %",map(p->index, 0, p->len/MAX_BLOCK_SIZE, 0, 100) );
+    printf("#");
 
-//	DTRACE("-> 2 block_size: %d, data_sent: %d, data_size %d - %d\r\n", block_size, data_sent,data_size, (data_sent < data_size));
+//    printf("*send-> |index: %d|  ", p->index);
+//    printf("|len: %d|  ", p->len);
+//    printf("|block_len: %d|  ", p->block_len);
+//    printf("|crc: 0x%X|   ", p->crc);
+//    printf("|block_crc: 0x%X|   \n\r", p->block_crc);
+
+//    for(int i = 0; i<  p->block_len; i++) {
+//        printf("0x%X\n\r",  p->data[i]);
+//    }
 
     if(data_sent < data_size) {
-        //udp_send_data((char *)&g_ADCBuffer + data_sent, block_size) == SUCCESS);
-        send_socket(&g_socket, (char*)p, sizeof(firmwarePacket_t) + block_size - 1);
-        printf("-> send firmware data - data crc: 0x%X   block size: %d\r\n", p->crc, p->block_len);
+        send_socket(&g_socket, (char*)p, (sizeof(firmwarePacket_t)- MAX_BLOCK_SIZE + block_size ));
+        g_senderState = sender_state_sent;
+
+        //printf("-> send firmware data - data crc: 0x%X   block size: %d\r\n", p->crc, p->block_len);
     }
     else {
+        g_senderState = sender_state_none;
         firmware->state = program_was_send;
+
+        printf("\nFlashing finish successfully\n");
     }
+
+    free(p);
 }
 
 uint32_t Reverse32(uint32_t value)
@@ -206,16 +248,49 @@ uint32_t Reverse32(uint32_t value)
 
 void parse_status()
 {
+    static int iterator = 0;
     uint16_t size = sizeof(Status_Packet);
+    iterator++;
 
     char data[256];
     int ret = receive_socket(&g_socket, data, 256);
 
-    memcpy(&g_status, data, size);
-    uint32_t real_ID = (uint32_t)Reverse32((g_status.probeID_1) ^ (g_status.probeID_2) ^ (g_status.probeID_3));
+    Status_Packet status;
+    memcpy(&status, data, size);
+    g_probe.status = status;
 
-    printf("Probe status |ID : %d|   ", real_ID);
-    printf("|Uptime: %d|      |Reset counter: %d| \n", g_status.uptime, g_status.Reset_counter);
+    uint32_t real_ID = (uint32_t)Reverse32((g_probe.status.probeID_1) ^ (g_probe.status.probeID_2) ^ (g_probe.status.probeID_3));
+
+
+    if(iterator == 3) {
+        printf("\nProbe |ID : %d|  ", real_ID);
+        printf("|Uptime: %d|   |IP: %s|   ", g_probe.status.uptime, inet_ntoa(g_probe.IP_ADD.sin_addr));
+
+        printf("Build ");
+        printf("|DATE : %d.%d.%d|  ", g_probe.buildDate.day, g_probe.buildDate.month, g_probe.buildDate.year);
+        printf("|TIME : %d:%d:%d|\n\r", g_probe.buildDate.hour, g_probe.buildDate.minute, g_probe.buildDate.second);
+
+        printf("\nDo u want upgrade firmware? [y/n]  ");
+        char answer;
+        //scanf("%c", &answer);
+        answer = getchar();
+
+        if(answer == 'y') {
+
+            printf("\nFile name %s ? [y,n]   ", g_firmware.fileName);
+            scanf("%c", &answer);
+            answer = getchar();
+
+            if(answer == 'n') {
+                printf("Type file name: ");
+                scanf("%s", &g_firmware.fileName[0]);
+                load_program_file(g_firmware.fileName);
+            }
+
+            send_firmware_header(&g_firmware);
+            send_firmware_data(&g_firmware);
+        }
+    }
 
 }
 
@@ -230,11 +305,7 @@ void parse_firmware_index()
 
     char data[256];
     int ret = receive_socket(&g_socket, data, 256);
-
-    memcpy(&g_index, data, size);
-
-    printf("Firmware index ");
-    printf("|DATE : %d.%d.%d|     ", g_index.day, g_index.month, g_index.year);
-    printf("|TIME : %d:%d:%d|\n\r", g_index.hour, g_index.minute, g_index.second);
-
+    FirmwareBuildDate_t index;
+    memcpy(&index, data, size);
+    g_probe.buildDate = index;
 }

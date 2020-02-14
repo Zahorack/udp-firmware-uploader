@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "main.h"
+#include "socket.h"
 
 #ifdef __GNUC__
 #define PACK( __Declaration__ ) __Declaration__ __attribute__((__packed__))
@@ -74,6 +75,15 @@ typedef struct {
     uint16_t year;
 }FirmwareBuildDate_t;
 
+typedef struct {
+    FirmwareBuildDate_t buildDate;
+    Status_Packet status;
+
+    SOCKADDR_IN IP_ADD;
+    uint32_t realID;
+}probeInfo_t;
+
+extern probeInfo_t g_probe;
 
 #pragma pack(push,1)
 typedef struct {
@@ -98,18 +108,19 @@ typedef struct {
 typedef struct {
     Packet_Header header;
     uint8_t crc;
+    uint32_t len;
     uint16_t index;
     uint16_t block_len;
-    char *data;
+    uint8_t block_crc;
+    char data[MAX_BLOCK_SIZE];
 }__attribute__((packed))firmwarePacket_t;
 #pragma pack(pop)
 
 
-extern FirmwareBuildDate_t g_index;
-extern Status_Packet g_status;
 
 extern uint8_t calc_crc8(uint8_t	* data, uint16_t len);
 extern void parse_packet();
+extern void firmware_sender(firmwareArgs_t *firmware);
 
 extern void parse_status();
 extern void get_firmware_index();

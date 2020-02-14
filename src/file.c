@@ -2,6 +2,7 @@
 // Created by oholly on 6. 2. 2020.
 //
 
+#include <mem.h>
 #include "../include/file.h"
 #include "../include/main.h"
 
@@ -19,14 +20,23 @@ void load_program_file(char *name)
     }
 
     char c;
-    int iterator;
+    int iterator = 0;
 
-    for(iterator = 0; (c = fgetc(fptr)) != EOF; iterator++) {
-        program[iterator] = c;
+    while (!feof(fptr)){                        // while not end of file
+        program[iterator] = fgetc(fptr);                         // get a character/byte from the file
+        iterator++;
     }
+
+//    for(iterator = 0; (c = fgetc(fptr)) != EOF; iterator++) {
+//        program[iterator] = c;
+//    }
+
     g_firmware.size = iterator;
     g_firmware.bin = program;
     g_firmware.state = program_available;
+
+    strcpy(g_firmware.fileName, name);
+//    g_firmware.fileName = name;
 
 
     printf("Data from the file [%d]:\n%s",g_firmware.size, program);

@@ -230,6 +230,33 @@ src/socket.c.s:
 	$(MAKE) -f CMakeFiles\udp_firmware_uploader.dir\build.make CMakeFiles/udp_firmware_uploader.dir/src/socket.c.s
 .PHONY : src/socket.c.s
 
+src/timer.obj: src/timer.c.obj
+
+.PHONY : src/timer.obj
+
+# target to build an object file
+src/timer.c.obj:
+	$(MAKE) -f CMakeFiles\udp_firmware_uploader.dir\build.make CMakeFiles/udp_firmware_uploader.dir/src/timer.c.obj
+.PHONY : src/timer.c.obj
+
+src/timer.i: src/timer.c.i
+
+.PHONY : src/timer.i
+
+# target to preprocess a source file
+src/timer.c.i:
+	$(MAKE) -f CMakeFiles\udp_firmware_uploader.dir\build.make CMakeFiles/udp_firmware_uploader.dir/src/timer.c.i
+.PHONY : src/timer.c.i
+
+src/timer.s: src/timer.c.s
+
+.PHONY : src/timer.s
+
+# target to generate assembly for a file
+src/timer.c.s:
+	$(MAKE) -f CMakeFiles\udp_firmware_uploader.dir\build.make CMakeFiles/udp_firmware_uploader.dir/src/timer.c.s
+.PHONY : src/timer.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -251,6 +278,9 @@ help:
 	@echo ... src/socket.obj
 	@echo ... src/socket.i
 	@echo ... src/socket.s
+	@echo ... src/timer.obj
+	@echo ... src/timer.i
+	@echo ... src/timer.s
 .PHONY : help
 
 

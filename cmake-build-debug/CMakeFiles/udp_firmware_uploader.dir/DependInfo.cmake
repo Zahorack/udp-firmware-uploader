@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/src/file.c" "C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/cmake-build-debug/CMakeFiles/udp_firmware_uploader.dir/src/file.c.obj"
   "C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/src/packet.c" "C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/cmake-build-debug/CMakeFiles/udp_firmware_uploader.dir/src/packet.c.obj"
   "C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/src/socket.c" "C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/cmake-build-debug/CMakeFiles/udp_firmware_uploader.dir/src/socket.c.obj"
+  "C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/src/timer.c" "C:/Users/oholly.DQI/CLionProjects/udp-firmware-uploader/cmake-build-debug/CMakeFiles/udp_firmware_uploader.dir/src/timer.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
