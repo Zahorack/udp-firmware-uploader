@@ -42,10 +42,10 @@ RM = "C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\oholly.DQI\CLionProjects\udp-firmware-uploader
+CMAKE_SOURCE_DIR = L:\DigitalProbe\udp-firmware-uploader
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\oholly.DQI\CLionProjects\udp-firmware-uploader\cmake-build-debug
+CMAKE_BINARY_DIR = L:\DigitalProbe\udp-firmware-uploader\cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/udp_firmware_uploader.dir/depend.make
@@ -58,68 +58,68 @@ include CMakeFiles/udp_firmware_uploader.dir/flags.make
 
 CMakeFiles/udp_firmware_uploader.dir/main.c.obj: CMakeFiles/udp_firmware_uploader.dir/flags.make
 CMakeFiles/udp_firmware_uploader.dir/main.c.obj: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\oholly.DQI\CLionProjects\udp-firmware-uploader\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/udp_firmware_uploader.dir/main.c.obj"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\udp_firmware_uploader.dir\main.c.obj   -c C:\Users\oholly.DQI\CLionProjects\udp-firmware-uploader\main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=L:\DigitalProbe\udp-firmware-uploader\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/udp_firmware_uploader.dir/main.c.obj"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\udp_firmware_uploader.dir\main.c.obj   -c L:\DigitalProbe\udp-firmware-uploader\main.c
 
 CMakeFiles/udp_firmware_uploader.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/udp_firmware_uploader.dir/main.c.i"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\oholly.DQI\CLionProjects\udp-firmware-uploader\main.c > CMakeFiles\udp_firmware_uploader.dir\main.c.i
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E L:\DigitalProbe\udp-firmware-uploader\main.c > CMakeFiles\udp_firmware_uploader.dir\main.c.i
 
 CMakeFiles/udp_firmware_uploader.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/udp_firmware_uploader.dir/main.c.s"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\oholly.DQI\CLionProjects\udp-firmware-uploader\main.c -o CMakeFiles\udp_firmware_uploader.dir\main.c.s
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S L:\DigitalProbe\udp-firmware-uploader\main.c -o CMakeFiles\udp_firmware_uploader.dir\main.c.s
 
 CMakeFiles/udp_firmware_uploader.dir/src/packet.c.obj: CMakeFiles/udp_firmware_uploader.dir/flags.make
 CMakeFiles/udp_firmware_uploader.dir/src/packet.c.obj: ../src/packet.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\oholly.DQI\CLionProjects\udp-firmware-uploader\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/udp_firmware_uploader.dir/src/packet.c.obj"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\udp_firmware_uploader.dir\src\packet.c.obj   -c C:\Users\oholly.DQI\CLionProjects\udp-firmware-uploader\src\packet.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=L:\DigitalProbe\udp-firmware-uploader\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/udp_firmware_uploader.dir/src/packet.c.obj"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\udp_firmware_uploader.dir\src\packet.c.obj   -c L:\DigitalProbe\udp-firmware-uploader\src\packet.c
 
 CMakeFiles/udp_firmware_uploader.dir/src/packet.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/udp_firmware_uploader.dir/src/packet.c.i"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\oholly.DQI\CLionProjects\udp-firmware-uploader\src\packet.c > CMakeFiles\udp_firmware_uploader.dir\src\packet.c.i
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E L:\DigitalProbe\udp-firmware-uploader\src\packet.c > CMakeFiles\udp_firmware_uploader.dir\src\packet.c.i
 
 CMakeFiles/udp_firmware_uploader.dir/src/packet.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/udp_firmware_uploader.dir/src/packet.c.s"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\oholly.DQI\CLionProjects\udp-firmware-uploader\src\packet.c -o CMakeFiles\udp_firmware_uploader.dir\src\packet.c.s
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S L:\DigitalProbe\udp-firmware-uploader\src\packet.c -o CMakeFiles\udp_firmware_uploader.dir\src\packet.c.s
 
 CMakeFiles/udp_firmware_uploader.dir/src/socket.c.obj: CMakeFiles/udp_firmware_uploader.dir/flags.make
 CMakeFiles/udp_firmware_uploader.dir/src/socket.c.obj: ../src/socket.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\oholly.DQI\CLionProjects\udp-firmware-uploader\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/udp_firmware_uploader.dir/src/socket.c.obj"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\udp_firmware_uploader.dir\src\socket.c.obj   -c C:\Users\oholly.DQI\CLionProjects\udp-firmware-uploader\src\socket.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=L:\DigitalProbe\udp-firmware-uploader\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/udp_firmware_uploader.dir/src/socket.c.obj"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\udp_firmware_uploader.dir\src\socket.c.obj   -c L:\DigitalProbe\udp-firmware-uploader\src\socket.c
 
 CMakeFiles/udp_firmware_uploader.dir/src/socket.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/udp_firmware_uploader.dir/src/socket.c.i"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\oholly.DQI\CLionProjects\udp-firmware-uploader\src\socket.c > CMakeFiles\udp_firmware_uploader.dir\src\socket.c.i
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E L:\DigitalProbe\udp-firmware-uploader\src\socket.c > CMakeFiles\udp_firmware_uploader.dir\src\socket.c.i
 
 CMakeFiles/udp_firmware_uploader.dir/src/socket.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/udp_firmware_uploader.dir/src/socket.c.s"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\oholly.DQI\CLionProjects\udp-firmware-uploader\src\socket.c -o CMakeFiles\udp_firmware_uploader.dir\src\socket.c.s
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S L:\DigitalProbe\udp-firmware-uploader\src\socket.c -o CMakeFiles\udp_firmware_uploader.dir\src\socket.c.s
 
 CMakeFiles/udp_firmware_uploader.dir/src/file.c.obj: CMakeFiles/udp_firmware_uploader.dir/flags.make
 CMakeFiles/udp_firmware_uploader.dir/src/file.c.obj: ../src/file.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\oholly.DQI\CLionProjects\udp-firmware-uploader\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/udp_firmware_uploader.dir/src/file.c.obj"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\udp_firmware_uploader.dir\src\file.c.obj   -c C:\Users\oholly.DQI\CLionProjects\udp-firmware-uploader\src\file.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=L:\DigitalProbe\udp-firmware-uploader\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/udp_firmware_uploader.dir/src/file.c.obj"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\udp_firmware_uploader.dir\src\file.c.obj   -c L:\DigitalProbe\udp-firmware-uploader\src\file.c
 
 CMakeFiles/udp_firmware_uploader.dir/src/file.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/udp_firmware_uploader.dir/src/file.c.i"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\oholly.DQI\CLionProjects\udp-firmware-uploader\src\file.c > CMakeFiles\udp_firmware_uploader.dir\src\file.c.i
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E L:\DigitalProbe\udp-firmware-uploader\src\file.c > CMakeFiles\udp_firmware_uploader.dir\src\file.c.i
 
 CMakeFiles/udp_firmware_uploader.dir/src/file.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/udp_firmware_uploader.dir/src/file.c.s"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\oholly.DQI\CLionProjects\udp-firmware-uploader\src\file.c -o CMakeFiles\udp_firmware_uploader.dir\src\file.c.s
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S L:\DigitalProbe\udp-firmware-uploader\src\file.c -o CMakeFiles\udp_firmware_uploader.dir\src\file.c.s
 
 CMakeFiles/udp_firmware_uploader.dir/src/timer.c.obj: CMakeFiles/udp_firmware_uploader.dir/flags.make
 CMakeFiles/udp_firmware_uploader.dir/src/timer.c.obj: ../src/timer.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\oholly.DQI\CLionProjects\udp-firmware-uploader\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/udp_firmware_uploader.dir/src/timer.c.obj"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\udp_firmware_uploader.dir\src\timer.c.obj   -c C:\Users\oholly.DQI\CLionProjects\udp-firmware-uploader\src\timer.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=L:\DigitalProbe\udp-firmware-uploader\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/udp_firmware_uploader.dir/src/timer.c.obj"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\udp_firmware_uploader.dir\src\timer.c.obj   -c L:\DigitalProbe\udp-firmware-uploader\src\timer.c
 
 CMakeFiles/udp_firmware_uploader.dir/src/timer.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/udp_firmware_uploader.dir/src/timer.c.i"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\oholly.DQI\CLionProjects\udp-firmware-uploader\src\timer.c > CMakeFiles\udp_firmware_uploader.dir\src\timer.c.i
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E L:\DigitalProbe\udp-firmware-uploader\src\timer.c > CMakeFiles\udp_firmware_uploader.dir\src\timer.c.i
 
 CMakeFiles/udp_firmware_uploader.dir/src/timer.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/udp_firmware_uploader.dir/src/timer.c.s"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\oholly.DQI\CLionProjects\udp-firmware-uploader\src\timer.c -o CMakeFiles\udp_firmware_uploader.dir\src\timer.c.s
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S L:\DigitalProbe\udp-firmware-uploader\src\timer.c -o CMakeFiles\udp_firmware_uploader.dir\src\timer.c.s
 
 # Object files for target udp_firmware_uploader
 udp_firmware_uploader_OBJECTS = \
@@ -141,7 +141,7 @@ udp_firmware_uploader.exe: CMakeFiles/udp_firmware_uploader.dir/build.make
 udp_firmware_uploader.exe: CMakeFiles/udp_firmware_uploader.dir/linklibs.rsp
 udp_firmware_uploader.exe: CMakeFiles/udp_firmware_uploader.dir/objects1.rsp
 udp_firmware_uploader.exe: CMakeFiles/udp_firmware_uploader.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\oholly.DQI\CLionProjects\udp-firmware-uploader\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable udp_firmware_uploader.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=L:\DigitalProbe\udp-firmware-uploader\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable udp_firmware_uploader.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\udp_firmware_uploader.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -154,6 +154,6 @@ CMakeFiles/udp_firmware_uploader.dir/clean:
 .PHONY : CMakeFiles/udp_firmware_uploader.dir/clean
 
 CMakeFiles/udp_firmware_uploader.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\oholly.DQI\CLionProjects\udp-firmware-uploader C:\Users\oholly.DQI\CLionProjects\udp-firmware-uploader C:\Users\oholly.DQI\CLionProjects\udp-firmware-uploader\cmake-build-debug C:\Users\oholly.DQI\CLionProjects\udp-firmware-uploader\cmake-build-debug C:\Users\oholly.DQI\CLionProjects\udp-firmware-uploader\cmake-build-debug\CMakeFiles\udp_firmware_uploader.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" L:\DigitalProbe\udp-firmware-uploader L:\DigitalProbe\udp-firmware-uploader L:\DigitalProbe\udp-firmware-uploader\cmake-build-debug L:\DigitalProbe\udp-firmware-uploader\cmake-build-debug L:\DigitalProbe\udp-firmware-uploader\cmake-build-debug\CMakeFiles\udp_firmware_uploader.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/udp_firmware_uploader.dir/depend
 
