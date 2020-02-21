@@ -22,6 +22,49 @@ senderSates_t g_senderState;
 timerArgs_t s_timer;
 static void sender();
 
+
+#define NS_INADDRSZ        4
+static int inet_pton4 (const char *src, const char *end, unsigned char *dst)
+{
+    int saw_digit, octets, ch;
+    unsigned char tmp[NS_INADDRSZ], *tp;
+    saw_digit = 0;
+    octets = 0;
+    *(tp = tmp) = 0;
+    while (src < end)
+    {
+        ch = *src++;
+        if (ch >= '0' && ch <= '9')
+        {
+            unsigned int new = *tp * 10 + (ch - '0');
+            if (saw_digit && *tp == 0)
+                return 0;
+            if (new > 255)
+                return 0;
+            *tp = new;
+            if (! saw_digit)
+            {
+                if (++octets > 4)
+                    return 0;
+                saw_digit = 1;
+            }
+        }
+        else if (ch == '.' && saw_digit)
+        {
+            if (octets == 4)
+                return 0;
+            *++tp = 0;
+            saw_digit = 0;
+        }
+        else
+            return 0;
+    }
+    if (octets < 4)
+        return 0;
+    memcpy (dst, tmp, NS_INADDRSZ);
+    return 1;
+}
+
 int main(int argc, char **argv)
 {
     char fileName[20];
@@ -34,10 +77,21 @@ int main(int argc, char **argv)
         load_program_file(DefaultFileName);
     }
 
+//    char ip[50];
+//    printf("Type IP ADDRES\n");
+//    scanf("%s", ip);
+//
+//    printf("IP: %s\n",  ip);
+//
+//    int len = strlen(ip);
+//    inet_pton4(&ip[0], &ip[0] + len, &g_socket.target_address.sin_addr);
+//
+//    printf("g_socket.target_address.sin_addr: %s",  g_socket.target_address.sin_addr);
+
 
     create_socket(&g_socket);
     bind_socket(&g_socket, TARGET_PORT);
-
+//    listen(g_socket.socket, 5);
 
     while(1) {
         parse_packet();
@@ -66,7 +120,7 @@ static void sender()
         if(timer_run(&s_timer)){
             duplication_sent++;
             send_tries++;
-            printf("nglt timeout \r\n");
+            printf("timeout \r\n");
             send_firmware_data(&g_firmware);
 
             if(send_tries > 3){

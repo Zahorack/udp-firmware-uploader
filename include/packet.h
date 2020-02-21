@@ -49,7 +49,9 @@ enum packet_type {
     packet_type_clear_davis_ID,
     packet_type_bootloader,
     packet_type_firmware_data,
-    packet_type_firmware_header
+    packet_type_firmware_header,
+    packet_type_firmware_data_ack,
+    packet_type_firmware_data_nack
 };
 
 #pragma pack(push,1)

@@ -13,7 +13,7 @@
 #define		PACKET_MAX_BLOCK_SIZE		1000
 
 static uint32_t data_sent = 0;
-
+static int status_iterator = 0;
 
 const uint8_t crc8_Table[] =
 {
@@ -110,7 +110,7 @@ void parse_packet()
                         parse_status();
 
                         //testing now
-                        get_firmware_index();
+                        send_simple_packet(packet_type_bootloader);
 
                         //if(je vyrmware stary, tak posli novy)
 
@@ -125,6 +125,10 @@ void parse_packet()
                         parse_firmware_index();
                         break;
 
+                    case packet_type_bootloader:
+                        status_iterator = 0;
+                        break;
+
                     case packet_type_data_ack:
                         data_sent += MAX_BLOCK_SIZE;
                         g_firmware.block_index++;
@@ -132,6 +136,13 @@ void parse_packet()
                        g_senderState = sender_state_confirmed;
 
                         //printf("<-packet_type_data_ack\n\r");
+                        break;
+                    case packet_type_firmware_data_ack:
+                        printf("\nFlashing finish successfully\n");
+                        break;
+
+                    case packet_type_firmware_data_nack:
+                        printf("\nFlashing failed!!!\n");
                         break;
 
                     default:
@@ -231,8 +242,6 @@ void send_firmware_data(firmwareArgs_t *firmware)
     else {
         g_senderState = sender_state_none;
         firmware->state = program_was_send;
-
-        printf("\nFlashing finish successfully\n");
     }
 
     free(p);
@@ -248,9 +257,8 @@ uint32_t Reverse32(uint32_t value)
 
 void parse_status()
 {
-    static int iterator = 0;
     uint16_t size = sizeof(Status_Packet);
-    iterator++;
+    status_iterator++;
 
     char data[256];
     int ret = receive_socket(&g_socket, data, 256);
@@ -261,8 +269,11 @@ void parse_status()
 
     uint32_t real_ID = (uint32_t)Reverse32((g_probe.status.probeID_1) ^ (g_probe.status.probeID_2) ^ (g_probe.status.probeID_3));
 
+    if(status_iterator < 3) {
+        get_firmware_index();
+    }
 
-    if(iterator == 3) {
+    if(status_iterator >= 3 && g_firmware.state != program_is_sending) {
         printf("\nProbe |ID : %d|  ", real_ID);
         printf("|Uptime: %d|   |IP: %s|   ", g_probe.status.uptime, inet_ntoa(g_probe.IP_ADD.sin_addr));
 
@@ -277,7 +288,7 @@ void parse_status()
 
         if(answer == 'y') {
 
-            printf("\nFile name %s ? [y,n]   ", g_firmware.fileName);
+            printf("\nFile name %s ? [y/n]   ", g_firmware.fileName);
             scanf("%c", &answer);
             answer = getchar();
 

@@ -15,7 +15,7 @@ static FILE *fptr;
 void load_program_file(char *name)
 {
     if ((fptr = fopen(name, "rb")) == NULL) {
-        printf("Error! opening file");
+        printf("Error! opening bin file");
         exit(1);
     }
 

@@ -20,6 +20,8 @@ typedef struct {
     SOCKET socket;
     SOCKADDR_IN source_address;
     SOCKADDR_IN target_address;
+
+    SOCKADDR_IN custom_address;
     uint8_t connection_state;
 
 } socketArgs_t;
