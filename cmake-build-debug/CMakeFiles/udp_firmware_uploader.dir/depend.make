@@ -6,6 +6,7 @@ CMakeFiles/udp_firmware_uploader.dir/main.c.obj: ../include/main.h
 CMakeFiles/udp_firmware_uploader.dir/main.c.obj: ../include/packet.h
 CMakeFiles/udp_firmware_uploader.dir/main.c.obj: ../include/socket.h
 CMakeFiles/udp_firmware_uploader.dir/main.c.obj: ../include/timer.h
+CMakeFiles/udp_firmware_uploader.dir/main.c.obj: ../include/utils.h
 CMakeFiles/udp_firmware_uploader.dir/main.c.obj: ../main.c
 
 CMakeFiles/udp_firmware_uploader.dir/src/file.c.obj: ../include/file.h
@@ -16,6 +17,7 @@ CMakeFiles/udp_firmware_uploader.dir/src/packet.c.obj: ../include/file.h
 CMakeFiles/udp_firmware_uploader.dir/src/packet.c.obj: ../include/main.h
 CMakeFiles/udp_firmware_uploader.dir/src/packet.c.obj: ../include/packet.h
 CMakeFiles/udp_firmware_uploader.dir/src/packet.c.obj: ../include/socket.h
+CMakeFiles/udp_firmware_uploader.dir/src/packet.c.obj: ../include/utils.h
 CMakeFiles/udp_firmware_uploader.dir/src/packet.c.obj: ../src/packet.c
 
 CMakeFiles/udp_firmware_uploader.dir/src/socket.c.obj: ../include/main.h
@@ -25,4 +27,11 @@ CMakeFiles/udp_firmware_uploader.dir/src/socket.c.obj: ../src/socket.c
 
 CMakeFiles/udp_firmware_uploader.dir/src/timer.c.obj: ../include/timer.h
 CMakeFiles/udp_firmware_uploader.dir/src/timer.c.obj: ../src/timer.c
+
+CMakeFiles/udp_firmware_uploader.dir/src/utils.c.obj: ../include/file.h
+CMakeFiles/udp_firmware_uploader.dir/src/utils.c.obj: ../include/main.h
+CMakeFiles/udp_firmware_uploader.dir/src/utils.c.obj: ../include/packet.h
+CMakeFiles/udp_firmware_uploader.dir/src/utils.c.obj: ../include/socket.h
+CMakeFiles/udp_firmware_uploader.dir/src/utils.c.obj: ../include/utils.h
+CMakeFiles/udp_firmware_uploader.dir/src/utils.c.obj: ../src/utils.c
 

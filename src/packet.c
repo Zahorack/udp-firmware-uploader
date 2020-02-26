@@ -3,10 +3,12 @@
 //
 
 #include <time.h>
+#include <winsock.h>
 #include "../include/packet.h"
 #include "../include/socket.h"
 #include "../include/main.h"
 #include "../include/file.h"
+#include "../include/utils.h"
 
 
 #define		PACKET_MARK					0x4B6B
@@ -14,6 +16,9 @@
 
 static uint32_t data_sent = 0;
 static int status_iterator = 0;
+
+probeInfo_t g_probesList[MAX_CONNECTIONS];
+int g_probeCount;
 
 const uint8_t crc8_Table[] =
 {
@@ -139,6 +144,7 @@ void parse_packet()
                         break;
                     case packet_type_firmware_data_ack:
                         printf("\nFlashing finish successfully\n");
+                        g_userInputState = 0;
                         break;
 
                     case packet_type_firmware_data_nack:
@@ -159,6 +165,8 @@ void parse_packet()
 
 void send_firmware_header(firmwareArgs_t *firmware)
 {
+    g_socket.target_address = g_probesList[g_firmware.probeIndex].IP_ADD;
+
     Data_Packet 	*p = malloc(sizeof(Data_Packet));
 
     if(p == NULL) {
@@ -190,6 +198,7 @@ long map(long x, long in_min, long in_max, long out_min, long out_max) {
 
 void send_firmware_data(firmwareArgs_t *firmware)
 {
+    g_socket.target_address = g_probesList[g_firmware.probeIndex].IP_ADD;
 
     uint32_t data_size 	= firmware->size;
     uint32_t block_size;
@@ -247,12 +256,25 @@ void send_firmware_data(firmwareArgs_t *firmware)
     free(p);
 }
 
-uint32_t Reverse32(uint32_t value)
+
+static uint8_t isProbeInList(SOCKADDR_IN ip) {
+
+    for(int i = 0; i < g_probeCount; i++) {
+        if(ntohl(ip.sin_addr.S_un.S_addr) == ntohl(g_probesList[i].IP_ADD.sin_addr.S_un.S_addr)){
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
+static uint8_t getProbeIndex(SOCKADDR_IN ip)
 {
-    return (((value & 0x000000FF) << 24) |
-            ((value & 0x0000FF00) <<  8) |
-            ((value & 0x00FF0000) >>  8) |
-            ((value & 0xFF000000) >> 24));
+    for(int i = 0; i < g_probeCount; i++) {
+        if(ntohl(ip.sin_addr.S_un.S_addr) == ntohl(g_probesList[i].IP_ADD.sin_addr.S_un.S_addr)){
+            return i;
+        }
+    }
 }
 
 void parse_status()
@@ -265,50 +287,55 @@ void parse_status()
 
     Status_Packet status;
     memcpy(&status, data, size);
-    g_probe.status = status;
 
-    uint32_t real_ID = (uint32_t)Reverse32((g_probe.status.probeID_1) ^ (g_probe.status.probeID_2) ^ (g_probe.status.probeID_3));
+    SOCKADDR_IN source_IP = g_socket.target_address;
 
-    if(status_iterator < 3) {
-        get_firmware_index();
+    uint8_t probe_id;
+
+    if(!isProbeInList(source_IP)) {
+        printf("new probe [%d] \n", g_probeCount);
+
+        probe_id = g_probeCount;
+        g_probeCount++;
+    }
+    else {
+        probe_id = getProbeIndex(source_IP);
     }
 
-    if(status_iterator >= 3 && g_firmware.state != program_is_sending) {
-        printf("\nProbe |ID : %d|  ", real_ID);
-        printf("|Uptime: %d|   |IP: %s|   ", g_probe.status.uptime, inet_ntoa(g_probe.IP_ADD.sin_addr));
+    g_probesList[probe_id].status = status;
+    g_probesList[probe_id].realID = status.probeID_1;
+    g_probesList[probe_id].IP_ADD = source_IP;
+
+    get_firmware_index();
+//    printf("\nProbe |ID : %d|  ", g_probesList[probe_id].realID);
+//    printf("|Uptime: %d|   |IP: %s|   ", g_probesList[probe_id].status.uptime, inet_ntoa(g_probesList[probe_id].IP_ADD.sin_addr));
+//
+//    printf("Build ");
+//    printf("|DATE : %d.%d.%d|  ", g_probesList[probe_id].buildDate.day, g_probesList[probe_id].buildDate.month, g_probesList[probe_id].buildDate.year);
+//    printf("|TIME : %d:%d:%d|\n\r", g_probesList[probe_id].buildDate.hour, g_probesList[probe_id].buildDate.minute, g_probesList[probe_id].buildDate.second);
+
+
+//
+}
+
+void print_probe_list()
+{
+    printf("\n\n");
+    for(int i =0; i < g_probeCount; i++) {
+        printf("Probe[%d] |ID : %d|  ", i, g_probesList[i].realID);
+        printf("|Uptime: %d|   |IP: %s|   ", g_probesList[i].status.uptime, inet_ntoa(g_probesList[i].IP_ADD.sin_addr));
 
         printf("Build ");
-        printf("|DATE : %d.%d.%d|  ", g_probe.buildDate.day, g_probe.buildDate.month, g_probe.buildDate.year);
-        printf("|TIME : %d:%d:%d|\n\r", g_probe.buildDate.hour, g_probe.buildDate.minute, g_probe.buildDate.second);
-
-        printf("\nDo u want upgrade firmware? [y/n]  ");
-        char answer;
-        //scanf("%c", &answer);
-        answer = getchar();
-
-        if(answer == 'y') {
-
-            printf("\nFile name %s ? [y/n]   ", g_firmware.fileName);
-            scanf("%c", &answer);
-            answer = getchar();
-
-            if(answer == 'n') {
-                printf("Type file name: ");
-                scanf("%s", &g_firmware.fileName[0]);
-                load_program_file(g_firmware.fileName);
-            }
-
-            send_firmware_header(&g_firmware);
-            send_firmware_data(&g_firmware);
-        }
+        printf("|DATE : %d.%d.%d|  ", g_probesList[i].buildDate.day, g_probesList[i].buildDate.month, g_probesList[i].buildDate.year);
+        printf("|TIME : %d:%d:%d|\n\r", g_probesList[i].buildDate.hour, g_probesList[i].buildDate.minute, g_probesList[i].buildDate.second);
     }
-
 }
 
 void get_firmware_index()
 {
     send_simple_packet(packet_type_firmware_index);
 }
+
 
 void parse_firmware_index()
 {
@@ -318,5 +345,13 @@ void parse_firmware_index()
     int ret = receive_socket(&g_socket, data, 256);
     FirmwareBuildDate_t index;
     memcpy(&index, data, size);
-    g_probe.buildDate = index;
+
+    SOCKADDR_IN source_IP = g_socket.target_address;
+
+    for(int i = 0; i < g_probeCount; i++) {
+        if(ntohl(source_IP.sin_addr.S_un.S_addr) == ntohl(g_probesList[i].IP_ADD.sin_addr.S_un.S_addr)){
+            g_probesList[i].buildDate = index;
+        }
+    }
+
 }

@@ -19,6 +19,7 @@ typedef struct {
     uint16_t block_index;
     char fileName[20];
     enum ProgramStateEnum state;
+    int probeIndex;
 }firmwareArgs_t;
 
 extern firmwareArgs_t g_firmware;

@@ -89,6 +89,9 @@
 		<Unit filename="L:/DigitalProbe/udp-firmware-uploader/include/timer.h">
 			<Option target="udp_firmware_uploader"/>
 		</Unit>
+		<Unit filename="L:/DigitalProbe/udp-firmware-uploader/include/utils.h">
+			<Option target="udp_firmware_uploader"/>
+		</Unit>
 		<Unit filename="L:/DigitalProbe/udp-firmware-uploader/main.c">
 			<Option target="udp_firmware_uploader"/>
 		</Unit>
@@ -102,6 +105,9 @@
 			<Option target="udp_firmware_uploader"/>
 		</Unit>
 		<Unit filename="L:/DigitalProbe/udp-firmware-uploader/src/timer.c">
+			<Option target="udp_firmware_uploader"/>
+		</Unit>
+		<Unit filename="L:/DigitalProbe/udp-firmware-uploader/src/utils.c">
 			<Option target="udp_firmware_uploader"/>
 		</Unit>
 		<Unit filename="L:/DigitalProbe/udp-firmware-uploader/CMakeLists.txt">

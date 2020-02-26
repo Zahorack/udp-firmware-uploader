@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "L:/DigitalProbe/udp-firmware-uploader/src/packet.c" "L:/DigitalProbe/udp-firmware-uploader/cmake-build-debug/CMakeFiles/udp_firmware_uploader.dir/src/packet.c.obj"
   "L:/DigitalProbe/udp-firmware-uploader/src/socket.c" "L:/DigitalProbe/udp-firmware-uploader/cmake-build-debug/CMakeFiles/udp_firmware_uploader.dir/src/socket.c.obj"
   "L:/DigitalProbe/udp-firmware-uploader/src/timer.c" "L:/DigitalProbe/udp-firmware-uploader/cmake-build-debug/CMakeFiles/udp_firmware_uploader.dir/src/timer.c.obj"
+  "L:/DigitalProbe/udp-firmware-uploader/src/utils.c" "L:/DigitalProbe/udp-firmware-uploader/cmake-build-debug/CMakeFiles/udp_firmware_uploader.dir/src/utils.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

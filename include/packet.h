@@ -85,7 +85,10 @@ typedef struct {
     uint32_t realID;
 }probeInfo_t;
 
-extern probeInfo_t g_probe;
+//extern probeInfo_t g_probe;
+
+extern probeInfo_t g_probesList[MAX_CONNECTIONS];
+extern int g_probeCount;
 
 #pragma pack(push,1)
 typedef struct {
@@ -132,4 +135,6 @@ extern void send_simple_packet(uint8_t packet_type);
 extern void send_firmware_header(firmwareArgs_t *firmware);
 extern void send_firmware_data(firmwareArgs_t *firmware);
 
+
+extern void print_probe_list();
 #endif //UDP_FIRMWARE_UPLOADER_PACKET_H

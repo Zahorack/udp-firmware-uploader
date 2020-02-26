@@ -16,9 +16,11 @@
 
 #define TARGET_PORT 54321
 
+#define MAX_CONNECTIONS 20
+
 typedef struct {
     SOCKET socket;
-    SOCKADDR_IN source_address;
+    //SOCKADDR_IN source_address;
     SOCKADDR_IN target_address;
 
     SOCKADDR_IN custom_address;

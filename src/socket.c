@@ -24,11 +24,11 @@ void create_socket(socketArgs_t *arg)
 void bind_socket(socketArgs_t *arg, int port)
 {
     printf("Binding socket...");
-    arg->source_address.sin_family = AF_INET;
-    arg->source_address.sin_port = htons(port);
-    arg->source_address.sin_addr.s_addr = INADDR_ANY;
+    arg->target_address.sin_family = AF_INET;
+    arg->target_address.sin_port = htons(port);
+    arg->target_address.sin_addr.s_addr = INADDR_ANY;
 
-    if(bind(arg->socket, (struct sockaddr *) &arg->source_address, sizeof(arg->source_address)) == SOCKET_ERROR)
+    if(bind(arg->socket, (struct sockaddr *) &arg->target_address, sizeof(arg->target_address)) == SOCKET_ERROR)
     {
         printf("Error\nCall to bind(s, (struct sockaddr *) &addr, sizeof(addr)); failed with:\n%d\n", WSAGetLastError());
         exit(1);
@@ -41,7 +41,6 @@ void bind_socket(socketArgs_t *arg, int port)
     char data[512];
     receive_socket(arg, data, 512);
 
-    g_probe.IP_ADD = arg->target_address;
 
 //    printf("IP: %s\n", inet_ntoa(arg->source_address.sin_addr));
 //    printf("IP: %s\n", inet_ntoa(arg->target_address.sin_addr));
@@ -68,7 +67,7 @@ int receive_socket(socketArgs_t *arg, char *data, int size)
 void send_socket(socketArgs_t *arg, char *data, int size)
 {
     int targetAddrLen = sizeof(arg->target_address);
-    sendto(arg->socket, data, size, 0, (struct sockaddr *) &arg->target_address, &targetAddrLen);
+    sendto(arg->socket, data, size, 0, (struct sockaddr *) &arg->target_address, targetAddrLen);
 }
 
 void close_socket(socketArgs_t *arg)
