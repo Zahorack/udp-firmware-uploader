@@ -294,7 +294,6 @@ void parse_status()
 
     if(!isProbeInList(source_IP)) {
         printf("new probe [%d] \n", g_probeCount);
-
         probe_id = g_probeCount;
         g_probeCount++;
     }
