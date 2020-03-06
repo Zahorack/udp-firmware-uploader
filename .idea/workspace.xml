@@ -11,24 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb589946-2e93-41d8-9f36-8c432d575aec" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.vs/udp_firmware_uploader/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.vs/udp_firmware_uploader/v16/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/udp_firmware_uploader.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/udp_firmware_uploader.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/udp_firmware_uploader.dir/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/udp_firmware_uploader.dir/main.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/udp_firmware_uploader.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/udp_firmware_uploader.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/udp_firmware_uploader.dir/src/file.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/udp_firmware_uploader.dir/src/file.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/udp_firmware_uploader.dir/src/packet.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/udp_firmware_uploader.dir/src/packet.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/udp_firmware_uploader.dir/src/socket.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/udp_firmware_uploader.dir/src/socket.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/udp_firmware_uploader.dir/src/utils.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/udp_firmware_uploader.dir/src/utils.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/LTD_STM32F407VET6.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/LTD_STM32F407VET6.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/udp_firmware_uploader.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/udp_firmware_uploader.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/packet.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/packet.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/socket.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/socket.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/file.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/file.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/packet.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/packet.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/socket.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/socket.c" afterDir="false" />
-    </list>
+    <list default="true" id="bb589946-2e93-41d8-9f36-8c432d575aec" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -110,8 +93,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/socket.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="663">
-                  <caret line="39" column="39" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="39" />
+                <state relative-caret-position="204">
+                  <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
                   <folding>
                     <element signature="e#43#73#0" expanded="true" />
                   </folding>
@@ -311,12 +294,12 @@
       <workItem from="1583184229665" duration="66000" />
       <workItem from="1583313482582" duration="599000" />
       <workItem from="1583436571459" duration="4309000" />
-      <workItem from="1583482583978" duration="3060000" />
+      <workItem from="1583482583978" duration="3660000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="126811000" />
+    <option name="totallyTimeSpent" value="127411000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -473,16 +456,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/socket.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="39" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="39" />
-          <folding>
-            <element signature="e#43#73#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/MinGW/include/winsock.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -524,6 +497,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="21" column="19" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/socket.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#43#73#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
