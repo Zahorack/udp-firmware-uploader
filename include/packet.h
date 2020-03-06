@@ -67,7 +67,7 @@ typedef struct {
 } __attribute__((packed)) Status_Packet;
 #pragma pack(pop)
 
-
+#pragma pack(push,1)
 typedef struct {
     uint8_t hour;
     uint8_t minute;
@@ -76,7 +76,9 @@ typedef struct {
     uint8_t month;
     uint16_t year;
 }FirmwareBuildDate_t;
+#pragma pack(pop)
 
+#pragma pack(push,1)
 typedef struct {
     FirmwareBuildDate_t buildDate;
     Status_Packet status;
@@ -84,8 +86,8 @@ typedef struct {
     SOCKADDR_IN IP_ADD;
     uint32_t realID;
 }probeInfo_t;
+#pragma pack(pop)
 
-//extern probeInfo_t g_probe;
 
 extern probeInfo_t g_probesList[MAX_CONNECTIONS];
 extern int g_probeCount;

@@ -40,11 +40,6 @@ void bind_socket(socketArgs_t *arg, int port)
     // Receive, to store target address
     char data[512];
     receive_socket(arg, data, 512);
-
-
-//    printf("IP: %s\n", inet_ntoa(arg->source_address.sin_addr));
-//    printf("IP: %s\n", inet_ntoa(arg->target_address.sin_addr));
-
 }
 
 int receive_socket(socketArgs_t *arg, char *data, int size)
