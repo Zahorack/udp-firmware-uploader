@@ -60,6 +60,6 @@ upload new firmware version to all probes (5 – 20 depends on
 machine) in a short time and without mechanical manipulation.
 <br/>
 
-<img src="https://github.com/Zahorack/udp-firmware-uploader/img/probes.jpg" align="center" width="600" title="hover text">
+<img src="https://github.com/Zahorack/udp-firmware-uploader/blob/master/img/probes.jpg" align="center" width="600" title="hover text">
 
 
