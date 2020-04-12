@@ -96,27 +96,3 @@ L:/DigitalProbe/udp-firmware-uploader/include/file.h
 ../include/utils.h
 L:/DigitalProbe/udp-firmware-uploader/include/utils.h
 
-L:/DigitalProbe/udp-firmware-uploader/src/socket.c
-../include/socket.h
-L:/DigitalProbe/udp-firmware-uploader/include/socket.h
-../include/packet.h
-L:/DigitalProbe/udp-firmware-uploader/include/packet.h
-
-L:/DigitalProbe/udp-firmware-uploader/src/utils.c
-../include/utils.h
-L:/DigitalProbe/udp-firmware-uploader/include/utils.h
-string.h
--
-winsock.h
--
-stdio.h
--
-stdlib.h
--
-string.h
--
-unistd.h
--
-stdint.h
--
-

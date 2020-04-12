@@ -24,7 +24,6 @@ timerArgs_t s_debugTimer;
 static void sender();
 
 
-
 int main(int argc, char **argv)
 {
     char fileName[20];

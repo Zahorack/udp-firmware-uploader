@@ -10,7 +10,6 @@
 #include "../include/file.h"
 #include "../include/utils.h"
 
-
 #define		PACKET_MARK					0x4B6B
 #define		PACKET_MAX_BLOCK_SIZE		1000
 
