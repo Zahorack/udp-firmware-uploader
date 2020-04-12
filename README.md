@@ -52,14 +52,14 @@ image from micro camera module with 20 FPS rate. The
 machine contains configuration of probes at specific positions
 to achieve measurement of required spots.
 
-<br/>
 These probes had implemented remote firmware update
 management system described in this publication. During
 development process and operation, we have been able to
 upload new firmware version to all probes (5 – 20 depends on
 machine) in a short time and without mechanical manipulation.
-<br/>
 
+<br/>
+<br/>
 <p align="center">
 <img src="https://github.com/Zahorack/udp-firmware-uploader/blob/master/img/probes.jpg" width="600" title="hover text">
 </p>
