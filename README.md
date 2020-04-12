@@ -25,14 +25,14 @@ We can split a software development process into two main stages. First stage be
 <br/>
 It is a good practice to use debugging tools and boards with lots of interfaces and GUIs. But these tools are not available in state of maintenance and service, because of PCB size constrains, power consumption, computing capacity etc. And this is where our solution takes meaning. We need way to upgrade features of final product, deployed in operation miles away or just without needed additive wires and hardware.
 
-<br/>.
-<br/>.
+<br/>
 
-## 2 Technical design and implementation
+
+# 2 Technical design and implementation
 
 ### [Read more](https://github.com/Zahorack/udp-firmware-uploader/blob/master/HOLLY_SVOC_2020.pdf)
-<br/>.
-<br/>.
+<br/>
+
 
 
 # 3 Results
